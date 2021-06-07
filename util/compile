@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+ts-node -T src/index.ts target.ts >build/tmp.c
+clang-format build/tmp.c | sponge build/tmp.c
+clang build/tmp.c -Iinclude -o output
